@@ -1,0 +1,43 @@
+<h1>Учителя</h1>
+<div class="form">
+  <mat-form-field>
+    <mat-label>Имя</mat-label>
+    <input [(ngModel)]="newTeacher.fullName" matInput>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Номер личного дела</mat-label>
+    <input [(ngModel)]="newTeacher.personalLifeNumber" matInput>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Номер телефона</mat-label>
+    <input [(ngModel)]="newTeacher.phoneNumber" matInput>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Дисциплина</mat-label>
+    <mat-select [(ngModel)]="newTeacher.disciplineId">
+      <mat-option *ngFor="let discipline of disciplines" [value]="discipline.id"> {{ discipline.name }} </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Дата рождения</mat-label>
+    <input [(ngModel)]="newTeacher.birthday" matInput [matDatepicker]="picker">
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="onCreateButtonClick()"> Создать </button>
+</div>
+@for (teacher of teachers; track $index) {
+  <div class="line">
+    <div>{{teacher.fullName}}</div>
+    <div>{{teacher.personalLifeNumber}}</div>
+    <div>{{teacher.phoneNumber}}</div>
+    <div>{{teacher.discipline}}</div>
+    <div>{{teacher.birthday | date}}</div>
+    <button mat-raised-button color="warn" (click)="onDeleteButtonClick(teacher.id)"> Удалить </button>
+  </div>
+}

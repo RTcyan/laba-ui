@@ -1,0 +1,31 @@
+<h1>Классы</h1>
+<div class="form">
+  <mat-form-field>
+    <mat-label>Имя</mat-label>
+    <input [(ngModel)]="newGrade.name" matInput>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Типа класса</mat-label>
+    <mat-select [(ngModel)]="newGrade.gradeTypeId">
+      <mat-option *ngFor="let gradeType of gradesTypes" [value]="gradeType.id"> {{ gradeType.name }} </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Учитель</mat-label>
+    <mat-select [(ngModel)]="newGrade.gradeTeacherId">
+      <mat-option *ngFor="let teacher of teachers" [value]="teacher.id"> {{ teacher.fullName }} </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="onCreateButtonClick()"> Создать </button>
+</div>
+@for (grade of grades; track $index) {
+  <div class="line">
+    <div>{{grade.name}}</div>
+    <div>{{grade.gradeTeacher}}</div>
+    <div>{{grade.gradeType}}</div>
+    <button mat-raised-button color="warn" (click)="onDeleteButtonClick(grade.id)"> Удалить </button>
+  </div>
+}
