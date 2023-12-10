@@ -13,7 +13,7 @@
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Учитель</mat-label>
+    <mat-label>Классный руководитель</mat-label>
     <mat-select [(ngModel)]="newGrade.gradeTeacherId">
       <mat-option *ngFor="let teacher of teachers" [value]="teacher.id"> {{ teacher.fullName }} </mat-option>
     </mat-select>
