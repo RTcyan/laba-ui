@@ -24,8 +24,8 @@
 @for (grade of grades; track $index) {
   <div class="line">
     <div>{{grade.name}}</div>
-    <div>{{grade.gradeTeacher}}</div>
     <div>{{grade.gradeType}}</div>
+    <div>{{grade.gradeTeacher}}</div>
     <button mat-raised-button color="warn" (click)="onDeleteButtonClick(grade.id)"> Удалить </button>
   </div>
 }
