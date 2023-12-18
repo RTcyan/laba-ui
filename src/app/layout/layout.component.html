@@ -2,6 +2,9 @@
   <div class="name">Лабораторная</div>
   <div class="teachers" [routerLink]="['teachers']" routerLinkActive="active">Учителя</div>
   <div class="teachers" [routerLink]="['grades']" routerLinkActive="active">Классы</div>
+  <div class="students" [routerLink]="['students']" routerLinkActive="active">Студенты</div>
+  <div class="schedule" [routerLink]="['schedule']" routerLinkActive="active">Расписание</div>
+  <div class="mark-log" [routerLink]="['mark-log']" routerLinkActive="active">Журнал оценок</div>
 </header>
 <main>
   <router-outlet></router-outlet>

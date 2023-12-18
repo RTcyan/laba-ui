@@ -1,0 +1,36 @@
+<h1>Журнал оценок</h1>
+<div class="form">
+
+  <mat-form-field>
+    <mat-label>Студент</mat-label>
+    <mat-select [(ngModel)]="newMarkLogItem.studentId">
+      <mat-option *ngFor="let student of students" [value]="student.id"> {{ student.fullName }} </mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+  <mat-form-field>
+    <mat-label>Занятие</mat-label>
+    <mat-select [(ngModel)]="newMarkLogItem.scheduleItemId">
+      <mat-option *ngFor="let scheduleItem of scheduleItems" [value]="scheduleItem.id"> {{ scheduleItem.discipline }} {{ scheduleItem.dateTime }}({{ scheduleItem.teacher }}) </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Оценка</mat-label>
+    <mat-select [(ngModel)]="newMarkLogItem.value">
+      <mat-option *ngFor="let mark of marks" [value]="mark"> {{ mark }} </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="onCreateButtonClick()"> Создать </button>
+</div>
+@for (markLogItem of markLogItems; track $index) {
+  <div class="line">
+    <div>{{markLogItem.student}}</div>
+    <div>{{markLogItem.value}}</div>
+    <div>{{markLogItem.scheduleItem.discipline}}</div>
+    <div>{{markLogItem.scheduleItem.teacher}}</div>
+    <div>{{markLogItem.scheduleItem.dateTime | date:'dd.MM.yyyy HH:mm'}}</div>
+    <button mat-raised-button color="warn" (click)="onDeleteButtonClick(markLogItem.id)"> Удалить </button>
+  </div>
+}

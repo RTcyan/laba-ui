@@ -1,1 +1,64 @@
-<p>students works!</p>
+<h1>Студенты</h1>
+<div class="form">
+  <mat-form-field>
+    <mat-label>ФИО</mat-label>
+    <input [(ngModel)]="newStudent.fullName" matInput>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Пол</mat-label>
+    <mat-select [(ngModel)]="newStudent.sex">
+      <mat-option value="М">Мужской</mat-option>
+      <mat-option value="Ж">Женский</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Номер личного дела</mat-label>
+    <input [(ngModel)]="newStudent.personalLifeNumber" matInput>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Номер телефона</mat-label>
+    <input [(ngModel)]="newStudent.phoneNumber" matInput>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Класс</mat-label>
+    <mat-select [(ngModel)]="newStudent.gradeId">
+      <mat-option *ngFor="let grade of grades" [value]="grade.id"> {{ grade.name }} </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Дата рождения</mat-label>
+    <input [(ngModel)]="newStudent.birthday" matInput [matDatepicker]="picker">
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>ФИО родителей</mat-label>
+    <input [(ngModel)]="newStudent.parentsFullName" matInput>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Телефоны родителей</mat-label>
+    <input [(ngModel)]="newStudent.parentsPhoneNumber" matInput>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Адрес</mat-label>
+    <input [(ngModel)]="newStudent.address" matInput>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="onCreateButtonClick()"> Создать </button>
+</div>
+@for (student of students; track $index) {
+  <div class="line">
+    <div>{{student.fullName}}</div>
+    <div>{{student.grade}}</div>
+    <div>{{student.personalLifeNumber}}</div>
+    <button mat-raised-button color="warn" (click)="onDeleteButtonClick(student.id)"> Удалить </button>
+  </div>
+}

@@ -37,7 +37,7 @@
     <div>{{teacher.personalLifeNumber}}</div>
     <div>{{teacher.phoneNumber}}</div>
     <div>{{teacher.discipline}}</div>
-    <div>{{teacher.birthday | date}}</div>
+    <div>{{teacher.birthday | date:'dd.MM.yyyy'}}</div>
     <button mat-raised-button color="warn" (click)="onDeleteButtonClick(teacher.id)"> Удалить </button>
   </div>
 }
